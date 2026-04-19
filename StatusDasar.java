@@ -11,14 +11,21 @@ public class StatusDasar {
         this.nyawa = nyawa;
     }
 
-    public String getNama() { return nama; }
-    public int getUang() { return uang; }
-    public int getLapar() { return lapar; }
-    public int getStress() { return stress; }
-    public int getNilai() { return nilai; }
-    public int getNyawa() { return nyawa; }
+    public String getNama() { 
+        return nama; }
+    public int getUang() { 
+        return uang; }
+    public int getLapar() { 
+        return lapar; }
+    public int getStress() { 
+        return stress; }
+    public int getNilai() { 
+        return nilai; }
+    public int getNyawa() { 
+        return nyawa; }
 
-    public void setUang(int uangBaru) { this.uang = uangBaru; }
+    public void setUang(int uangBaru) { 
+        this.uang = uangBaru; }
 
     public void setLapar(int laparBaru) {
         if (laparBaru > 100) { this.lapar = 100; }
@@ -29,7 +36,7 @@ public class StatusDasar {
         if (stressBaru < 0) this.stress = 0;
         else if (stressBaru > 100) this.stress = 100;
         else this.stress = stressBaru;
-    }
+    }//0-100
 
     public void setNilai(int nilaiBaru) {
         if (nilaiBaru > 100) { this.nilai = 100; }

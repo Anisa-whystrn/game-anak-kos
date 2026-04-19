@@ -8,7 +8,7 @@ public class SistemEkonomi {
     }
 
     public void beliToken(AnakKost anakKost, SistemKejadian kejadian) {
-        if (anakKost.getUang() >= 50000) {
+        if (anakKost.getUang() >= 50000 && kejadian.isMatiLampu) {
             System.out.println(">> Kamu beli token listrik (Uang -50rb)");
             anakKost.setUang(anakKost.getUang() - 50000);
             kejadian.isMatiLampu = false;

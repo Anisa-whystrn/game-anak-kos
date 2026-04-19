@@ -20,10 +20,12 @@ public class GameEngine {
 
         // LOOP UTAMA: 30 HARI
         for (int h = 1; h <= 30; h++) {
-            int jumlahBelajarHariIni = 0; // Counter bonus belajar
+            int jumlahBelajarHariIni = 0; 
             
             // Degradasi Harian (Awal Hari)
-            pemain.setLapar(pemain.getLapar() + 10);
+            if (h > 1) {
+                pemain.setLapar(pemain.getLapar() + 10);
+            }
             hariTanpaBelajar++;
 
             if (hariTanpaBelajar > 3) {
@@ -85,11 +87,26 @@ public class GameEngine {
                         // 4. Logika Print Tanpa Tugas
                         else if (pil == 2 && !kejadian.adaTugasPrint) {
                             System.out.println(">> Tidak ada tugas yang perlu di-print saat ini.");
+                            pilihanValid = false; // Tidak bisa pilih print jika tidak ada tugas
                         } 
                         // 5. Logika Mati Lampu
                         else if (kejadian.isMatiLampu && pil == 2) {
                             System.out.println(">> Listrik mati! Printer tidak bisa menyala.");
-                        } else {
+                            pilihanValid = false; // Tidak bisa pilih print saat mati lampu
+                        }else if (kejadian.isMatiLampu && pil == 1) {
+                            System.out.println(">> Listrik mati! Belajar di kegelapan tidak efektif.");
+                            pilihanValid = false; // Tetap bisa pilih belajar, tapi efeknya sudah diatur di SistemAkademik
+                        }else if (kejadian.isMatiLampu && pil == 6) {
+                            System.out.println(">> Listrik mati! Minta transfer online tidak bisa dilakukan.");
+                            pilihanValid = false; // Tidak bisa pilih minta transfer saat mati lampu
+                        }else if (kejadian.isMatiLampu && pil == 3 ) {
+                            System.out.println(">> Listrik mati! beli dulu token listrik.");
+                            pilihanValid = false; // Tidak bisa pilih kerja saat mati lampu
+                        }else if (kejadian.isMatiLampu && pil == 4 ) {
+                            System.out.println(">> Listrik mati! beli dulu token listrik baru bisa makan nyaman.");
+                            pilihanValid = false; // Tidak bisa pilih makan saat mati lampu
+                        }
+                        else {
                             pilihanValid = true; // Lolos semua pengecekan
                         }
                     } else {
